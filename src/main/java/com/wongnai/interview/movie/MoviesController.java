@@ -25,7 +25,8 @@ public class MoviesController {
 	 */
 	@Autowired
 	//@Qualifier("simpleMovieSearchService")
-	@Qualifier("databaseMovieSearchService")
+	//@Qualifier("databaseMovieSearchService")
+	@Qualifier("invertedIndexMovieSearchService")
 	private MovieSearchService movieSearchService;
 
 	@RequestMapping(method = RequestMethod.GET)

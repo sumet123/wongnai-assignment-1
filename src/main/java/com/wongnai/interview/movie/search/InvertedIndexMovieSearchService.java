@@ -1,7 +1,10 @@
 package com.wongnai.interview.movie.search;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import com.wongnai.interview.movie.InvertedIndex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
@@ -13,6 +16,7 @@ import com.wongnai.interview.movie.MovieSearchService;
 @Component("invertedIndexMovieSearchService")
 @DependsOn("movieDatabaseInitializer")
 public class InvertedIndexMovieSearchService implements MovieSearchService {
+
 	@Autowired
 	private MovieRepository movieRepository;
 
@@ -35,6 +39,38 @@ public class InvertedIndexMovieSearchService implements MovieSearchService {
 		// you have to return can be union or intersection of those 2 sets of ids.
 		// By the way, in this assignment, you must use intersection so that it left for just movie id 5.
 
-		return null;
+		List<Movie> moviesList = new ArrayList<>();
+		ArrayList<Long> queryIds = null;
+		String[] parts = queryText.toLowerCase().split(" ");
+		if(parts.length == 1){
+			System.out.println("case 1");
+			//System.out.println(parts[0]);
+			//System.out.println(InvertedIndex.invertedIndex.get(parts[0]));
+			queryIds = InvertedIndex.invertedIndex.get(parts[0]);
+		}
+		else if(parts.length > 1){
+			System.out.println("case n");
+			queryIds = InvertedIndex.invertedIndex.get(parts[0]);
+			for(int i=1; i<parts.length; i++){
+				queryIds = intersect(queryIds, InvertedIndex.invertedIndex.get(parts[i]));
+			}
+		}
+		if(queryIds == null){
+			return new ArrayList<>();
+		}
+		for(Long id : queryIds){
+			System.out.println(id);
+		}
+		return movieRepository.findByMovieIds(queryIds);
+	}
+
+	private ArrayList<Long> intersect(ArrayList<Long> arl1, ArrayList<Long> arl2){
+		ArrayList<Long> result = new ArrayList<>();
+		for (Long id : arl1) {
+			if(arl2.contains(id)) {
+				result.add(id);
+			}
+		}
+		return result;
 	}
 }
