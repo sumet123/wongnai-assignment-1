@@ -1,5 +1,7 @@
 package com.wongnai.interview.movie;
 
+import com.wongnai.interview.movie.external.MovieData;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,12 @@ public class Movie {
 
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> actors = new ArrayList<>();
+
+	// For SimpleMovieSearchService
+	public Movie(MovieData movieData){
+	    this.name = movieData.getTitle();
+	    this.actors = movieData.getCast();
+    }
 
 	/**
 	 * Required by JPA.
