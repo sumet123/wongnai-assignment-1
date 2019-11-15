@@ -23,7 +23,7 @@ public class Movie {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> actors = new ArrayList<>();
 
-	// For SimpleMovieSearchService
+	// For SimpleMovieSearchService & MovieDatabaseSynchronizer
 	public Movie(MovieData movieData){
 	    this.name = movieData.getTitle();
 	    this.actors = movieData.getCast();
