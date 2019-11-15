@@ -2,7 +2,6 @@ package com.wongnai.interview.movie.search;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import com.wongnai.interview.movie.InvertedIndex;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,13 +42,9 @@ public class InvertedIndexMovieSearchService implements MovieSearchService {
 		ArrayList<Long> queryIds = null;
 		String[] parts = queryText.toLowerCase().split(" ");
 		if(parts.length == 1){
-			System.out.println("case 1");
-			//System.out.println(parts[0]);
-			//System.out.println(InvertedIndex.invertedIndex.get(parts[0]));
 			queryIds = InvertedIndex.invertedIndex.get(parts[0]);
 		}
 		else if(parts.length > 1){
-			System.out.println("case n");
 			queryIds = InvertedIndex.invertedIndex.get(parts[0]);
 			for(int i=1; i<parts.length; i++){
 				queryIds = intersect(queryIds, InvertedIndex.invertedIndex.get(parts[i]));
@@ -57,9 +52,6 @@ public class InvertedIndexMovieSearchService implements MovieSearchService {
 		}
 		if(queryIds == null){
 			return new ArrayList<>();
-		}
-		for(Long id : queryIds){
-			System.out.println(id);
 		}
 		return movieRepository.findByMovieIds(queryIds);
 	}
