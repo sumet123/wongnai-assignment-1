@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InvertedIndex {
-    public static Map<String, ArrayList<Long>> invertedIndex = new HashMap<>();
+    private static Map<String, ArrayList<Long>> invertedIndex;
 
-    public InvertedIndex(){}
+    public InvertedIndex(){
+        invertedIndex = new HashMap<>();
+    }
 
-    public static void putToInvertedIndex(String word, Long movieId){
+    public void putToInvertedIndex(String word, Long movieId){
         if(invertedIndex.get(word) == null){
             invertedIndex.put(word, new ArrayList<>());
             invertedIndex.get(word).add(movieId);
@@ -19,5 +21,13 @@ public class InvertedIndex {
                 invertedIndex.get(word).add(movieId);
             }
         }
+    }
+
+    public static Map<String, ArrayList<Long>> getInvertedIndex(){
+        return invertedIndex;
+    }
+
+    public void resetInvertedIndex(){
+        invertedIndex = new HashMap<>();
     }
 }

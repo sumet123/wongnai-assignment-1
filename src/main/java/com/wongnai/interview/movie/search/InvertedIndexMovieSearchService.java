@@ -42,12 +42,12 @@ public class InvertedIndexMovieSearchService implements MovieSearchService {
 		ArrayList<Long> queryIds = null;
 		String[] parts = queryText.toLowerCase().split(" ");
 		if(parts.length == 1){
-			queryIds = InvertedIndex.invertedIndex.get(parts[0]);
+			queryIds = InvertedIndex.getInvertedIndex().get(parts[0]);
 		}
 		else if(parts.length > 1){
-			queryIds = InvertedIndex.invertedIndex.get(parts[0]);
+			queryIds = InvertedIndex.getInvertedIndex().get(parts[0]);
 			for(int i=1; i<parts.length; i++){
-				queryIds = intersect(queryIds, InvertedIndex.invertedIndex.get(parts[i]));
+				queryIds = intersect(queryIds, InvertedIndex.getInvertedIndex().get(parts[i]));
 			}
 		}
 		if(queryIds == null){

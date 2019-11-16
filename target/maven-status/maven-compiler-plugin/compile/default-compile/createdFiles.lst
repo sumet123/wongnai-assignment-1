@@ -1,4 +1,5 @@
 com\wongnai\interview\movie\sync\MovieDataSynchronizer.class
+com\wongnai\interview\movie\InvertedIndex.class
 com\wongnai\interview\movie\sync\MovieDatabaseInitializer.class
 com\wongnai\interview\config\MovieConfiguration.class
 com\wongnai\interview\movie\external\MovieDataServiceImpl.class

@@ -1,6 +1,7 @@
 C:\Users\Sumet\IdeaProjects\wongnai-assignment-1\src\main\java\com\wongnai\interview\config\MovieConfiguration.java
 C:\Users\Sumet\IdeaProjects\wongnai-assignment-1\src\main\java\com\wongnai\interview\movie\MovieRepository.java
 C:\Users\Sumet\IdeaProjects\wongnai-assignment-1\src\main\java\com\wongnai\interview\movie\search\DatabaseMovieSearchService.java
+C:\Users\Sumet\IdeaProjects\wongnai-assignment-1\src\main\java\com\wongnai\interview\movie\InvertedIndex.java
 C:\Users\Sumet\IdeaProjects\wongnai-assignment-1\src\main\java\com\wongnai\interview\movie\MoviesController.java
 C:\Users\Sumet\IdeaProjects\wongnai-assignment-1\src\main\java\com\wongnai\interview\movie\sync\MovieDataSynchronizer.java
 C:\Users\Sumet\IdeaProjects\wongnai-assignment-1\src\main\java\com\wongnai\interview\movie\external\MovieDataServiceImpl.java

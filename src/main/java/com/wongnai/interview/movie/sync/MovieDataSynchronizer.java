@@ -26,6 +26,8 @@ public class MovieDataSynchronizer {
 
 		MoviesResponse moviesResponse = movieDataService.fetchAll();
 		InvertedIndex invertedIndex = new InvertedIndex();
+		invertedIndex.resetInvertedIndex(); //force to clear inverted index
+		movieRepository.deleteAll(); //force to clear database
 		for(MovieData movieData : moviesResponse){
 			Movie movie = new Movie(movieData);
 			movieRepository.save(movie);
